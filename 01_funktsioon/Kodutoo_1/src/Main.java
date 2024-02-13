@@ -1,5 +1,3 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         // Temperatuuride konverteerimine
@@ -28,11 +26,9 @@ public class Main {
         // Massiivi arvude summeerimine
         int[] bigArr = {1,2,3,4,5,6,7,8,9,10,132,124,435};
         int arrSum = arraySum(bigArr);
-        String bigArrStr = "";
         System.out.printf("Massiivi summa on: %d", arrSum);
     }
 
-    // Siiani kasutatud double, char, String, int (array)
     private static Double tempConversion(double temp, char convTo) {
         // F->C  => ((F-32)*5)9
         // C->F => (C * 9 / 5) + 32
@@ -48,12 +44,12 @@ public class Main {
 
     private static String backString(String initString) {
         int strLen = initString.length();
-        String reverseStr = "";
+        StringBuilder reverseStr = new StringBuilder();
         for (int i = strLen - 1 ; i >= 0; i--) {
             char tempChar = initString.charAt(i);
-            reverseStr += tempChar;
+            reverseStr.append(tempChar);
         }
-        return reverseStr;
+        return reverseStr.toString();
     }
 
     private static int arraySum(int[] array) {
