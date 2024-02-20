@@ -1,10 +1,6 @@
 import java.util.Random;
 
-public class Dragon {
-    int xCoord;// Deklaleerib muutuja
-    int yCoord;
-    char symbol;
-
+public class Dragon extends Character{
     // Konstruktor
     public Dragon(Random random, int mapHeight, int mapWidth) {
         xCoord = getCoords(random, mapWidth); // Annab muutujale algväärtuse

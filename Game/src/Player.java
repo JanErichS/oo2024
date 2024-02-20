@@ -1,10 +1,12 @@
 import java.util.Random;
-
-public class Player {
-    int xCoord;// Deklareerib muutuja
-    int yCoord;
-    char symbol;
+// extends võtab kõik funkts characrerist
+// igal alamklassil saab olla 1 ülemklass
+// Implements -> kohustab mingit funkts kasutama
+// extends -> pakub võimaluse
+public class Player extends Character implements RandomCoord{
     Direction direction;
+    Item item; // Klassikomplekt
+    Vehicle vehicle;
 
     public Player(Random random, int mapHeight, int mapWidth) {
         xCoord = getCoords(random, mapWidth); // Annab muutujale algväärtuse
@@ -30,17 +32,17 @@ public class Player {
                 if(yCoord > 1) yCoord--;
             }
             case DOWN -> {
-                if (yCoord < map.mapHeight - 1) yCoord++;
+                if (yCoord < map.mapHeight - 2) yCoord++;
             }
             case LEFT -> {
                 if (xCoord > 1) xCoord--;
             }
             case RIGHT -> {
-                if (xCoord < map.mapWidth - 1) xCoord++;
+                if (xCoord < map.mapWidth - 2) xCoord++;
             }
         }
     }
-    private int getCoords(Random random, int mapCoords) {
+    public int getCoords(Random random, int mapCoords) {
         return random.nextInt(1, mapCoords - 1);
     }
 }

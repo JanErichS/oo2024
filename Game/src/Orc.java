@@ -1,10 +1,6 @@
 import java.util.Random;
 
-public class Orc {
-    int xCoord;// Deklaleerib muutuja
-    int yCoord;
-    char symbol;
-
+public class Orc extends Character implements RandomCoord{
     // Konstruktor
     public Orc(Random random, int mapHeight, int mapWidth) {
         xCoord = getCoords(random, mapWidth); // Annab muutujale algväärtuse
@@ -12,7 +8,7 @@ public class Orc {
         symbol = 'O';
     }
 
-    private int getCoords(Random random, int mapCoords) {
+    public int getCoords(Random random, int mapCoords) {
         return random.nextInt(1, mapCoords - 1);
     }
 }

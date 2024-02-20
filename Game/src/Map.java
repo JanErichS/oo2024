@@ -1,4 +1,5 @@
-import java.security.PublicKey;
+//import java.security.PublicKey;
+import java.util.List;
 
 public class Map {
     int mapHeight;
@@ -8,7 +9,7 @@ public class Map {
         mapWidth = width;
     }
 
-    public void printMap(Player player, Dragon dragon, Orc orc) {
+    public void printMap(List<Character> characters, List<Item> items) {
         for (int y = 0; y < mapHeight; y++) {
             for (int x = 0; x < mapWidth; x++) {
                 char symbol;
@@ -17,14 +18,17 @@ public class Map {
                 } else if (x == 0 || x == mapWidth - 1) {
                     symbol = '|';
                 } else {
-                    if (x == player.xCoord && y == player.yCoord) {
-                        symbol = player.symbol;
-                    } else if (x == dragon.xCoord && y == dragon.yCoord) {
-                        symbol = dragon.symbol;
-                    } else if (x == orc.xCoord && y == orc.yCoord) {
-                        symbol = orc.symbol;
-                    } else {
-                        symbol = ' ';
+                    symbol = ' ';
+                    // Lühendatud for (each) cycle
+                    for (Item e : items) {
+                        if (e.xCoord == x && e.yCoord == y) {
+                            symbol = e.symbol;
+                        }
+                    } // for loop lõpp
+                    for (Character c: characters) {
+                        if (c.xCoord == x && c.yCoord == y) {
+                            symbol = c.symbol;
+                        }
                     }
                 }
                 System.out.print(symbol);
