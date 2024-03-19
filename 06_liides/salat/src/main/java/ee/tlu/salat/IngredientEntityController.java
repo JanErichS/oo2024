@@ -1,18 +1,25 @@
 package ee.tlu.salat;
-
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class IngredientEntityController {
-    List<IngredientEntity> ingredients = new ArrayList<>(); // IRL DB
+
+    // Esimene variant
+    //    @Autowired
+    //            IngredientRepository ingredientRepository;
+    // Teine variant
+    IngredientRepository ingredientRepository;
+    public IngredientEntityController(IngredientRepository ingredientRepository){
+        this.ingredientRepository = ingredientRepository;
+    }
+
+    // List<IngredientEntity> ingredients = new ArrayList<>(); // IRL DB
 
     @GetMapping("toiduained")
     public List<IngredientEntity> getIngredients(){
-        return ingredients;
+        return ingredientRepository.findAll();
     }
 
     // Postmapping pole browseri omadus
@@ -24,43 +31,53 @@ public class IngredientEntityController {
             @PathVariable int carbs
     ){
         if (protein + fat + carbs > 100){
-            return ingredients;
+            return ingredientRepository.findAll();
         }
         IngredientEntity ingredient = new IngredientEntity(name, protein, fat, carbs);
-        ingredients.add(ingredient);
-        return ingredients;
+        ingredientRepository.save(ingredient);
+        return ingredientRepository.findAll();
     }
 
-    @DeleteMapping("toiduained/{index}")
-    public IngredientEntity deleteIngredient(@PathVariable int index){
-        return ingredients.remove(index);
+    @PostMapping("toiduained")
+    public List<IngredientEntity> addIngredientsAlso(@RequestBody IngredientEntity ingredientEntity){
+        if (ingredientEntity.protein + ingredientEntity.fat + ingredientEntity.carbs > 100){
+            return ingredientRepository.findAll();
+        }
+
+        ingredientRepository.save(ingredientEntity);
+        return ingredientRepository.findAll();
+    }
+
+    @DeleteMapping("toiduained/{name}")
+    public IngredientEntity deleteIngredient(@PathVariable String name){
+        ingredientRepository.deleteById(name);
+        return (IngredientEntity) ingredientRepository.findAll();
     }
 
     // IRL primary key järgi, prglt järjekorranum järgi
     @PutMapping("toiduained")
     public List<IngredientEntity> changeIngredients(
-            @RequestParam int index,
             @RequestParam String name,
             @RequestParam int protein,
             @RequestParam int fat,
             @RequestParam int carbs
     ){
         IngredientEntity ingredient = new IngredientEntity(name, protein, fat, carbs);
-        ingredients.set(index, ingredient);
-        return ingredients;
+        ingredientRepository.save(ingredient);
+        return ingredientRepository.findAll();
     }
 
     // CRUD -> Create, Read (Kõik ja üks kindel), Update, Delete
 
 
-    @GetMapping("toiduained/{index}")
-    public IngredientEntity getOneIngredient(@PathVariable int index){
-        return ingredients.get(index);
+    @GetMapping("toiduained/{name}")
+    public IngredientEntity getOneIngredient(@PathVariable String name){
+        return ingredientRepository.findById(name).get();
     }
 
     @GetMapping("toiduainete-koguarv")
-    public int ingredientsTotal(){
-        return ingredients.size();
+    public long ingredientsTotal(){
+        return ingredientRepository.findAll().size();
     }
     @GetMapping("tere/{name}")
     public String hello(@PathVariable String name){
