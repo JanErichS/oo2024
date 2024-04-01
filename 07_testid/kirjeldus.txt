@@ -1,1 +1,1 @@
-Rühmaga koostatud rakendus, kus on liides, selle tööd kontrollivad testid, realiseeriv klass ning liidesele vastavat klassi kasutav näitprogramm. 
+Lisa eelmine kodutöö (Spring sees olev Entity) andmebaasi.
