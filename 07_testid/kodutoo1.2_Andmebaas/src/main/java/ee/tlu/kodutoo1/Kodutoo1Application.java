@@ -2,7 +2,7 @@ package ee.tlu.kodutoo1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-// Pane Entity PostgreDB-sse
+// Pane Entity DB-sse
 @SpringBootApplication
 public class Kodutoo1Application {
 

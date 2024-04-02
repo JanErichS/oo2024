@@ -6,24 +6,24 @@ import java.util.Optional;
 
 @RestController
 public class CarController {
-    CarRepository carRepository;
+    CarRepository carRepository; // Võiks teha @Autowired-iga.
 
     public CarController(CarRepository carRepository){
         this.carRepository = carRepository;
-    }
+    } // See sobib ka, vali ise.
     @GetMapping("cars")
     public List<CarEntity> getCars(){
         return carRepository.findAll();
     }
 
-    @PostMapping("cars/{name}/{model}/{year}/{msrp}")
+    @PostMapping("cars")
     public List<CarEntity> addCars(
-            @PathVariable String name,
-            @PathVariable String model,
-            @PathVariable int year,
-            @PathVariable double msrp
+            @RequestParam String brand,
+            @RequestParam String model,
+            @RequestParam int year,
+            @RequestParam double msrp
             ) {
-        CarEntity car = new CarEntity(null, name, model, year, msrp);
+        CarEntity car = new CarEntity(null, brand, model, year, msrp);
         carRepository.save(car);
         return carRepository.findAll();
     }

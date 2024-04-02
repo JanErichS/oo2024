@@ -4,6 +4,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class IngredientEntityController {
 
     // Esimene variant
@@ -23,7 +24,8 @@ public class IngredientEntityController {
     }
 
     // Postmapping pole browseri omadus
-    @PostMapping("toiduained/{name}/{protein}/{fat}/{carbs}")
+    // Näide, pigem tee RequestParamiga.
+    @PostMapping("toiduained/{name}/{protein}/{fat}/{carbs}/")
     public List<IngredientEntity> addIngredients(
             @PathVariable String name,
             @PathVariable int protein,
@@ -55,7 +57,7 @@ public class IngredientEntityController {
     }
 
     // IRL primary key järgi, prglt järjekorranum järgi
-    @PutMapping("toiduained")
+    @PutMapping("toiduained/muuda")
     public List<IngredientEntity> changeIngredients(
             @RequestParam String name,
             @RequestParam int protein,
@@ -75,7 +77,7 @@ public class IngredientEntityController {
         return ingredientRepository.findById(name).get();
     }
 
-    @GetMapping("toiduainete-koguarv")
+    @GetMapping("toiduained-koguarv")
     public long ingredientsTotal(){
         return ingredientRepository.findAll().size();
     }
