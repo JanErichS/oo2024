@@ -51,9 +51,9 @@ public class IngredientEntityController {
     }
 
     @DeleteMapping("toiduained/{name}")
-    public IngredientEntity deleteIngredient(@PathVariable String name){
+    public List<IngredientEntity> deleteIngredient(@PathVariable String name){
         ingredientRepository.deleteById(name);
-        return (IngredientEntity) ingredientRepository.findAll();
+        return ingredientRepository.findAll();
     }
 
     // IRL primary key järgi, prglt järjekorranum järgi
@@ -75,6 +75,16 @@ public class IngredientEntityController {
     @GetMapping("toiduained/{name}")
     public IngredientEntity getOneIngredient(@PathVariable String name){
         return ingredientRepository.findById(name).get();
+    }
+
+    @GetMapping("toiduained-valk-min/{minProtein}")
+    public List<IngredientEntity> ingredientMinProtein(@PathVariable int minProtein){
+        return ingredientRepository.findAllByProteinGreaterThan(minProtein);
+    }
+
+    @GetMapping("toiduained-sysivesik-min/{min}/{max}")
+    public List<IngredientEntity> ingredientBetweenCarbs(@PathVariable int min, @PathVariable int max){
+        return ingredientRepository.findAllByCarbsBetween(min, max);
     }
 
     @GetMapping("toiduained-koguarv")

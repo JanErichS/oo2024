@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+.addIngredient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+#deleteButton {
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  color: red;
+  border-radius: 20%;
+  border-style: none;
+  margin-left: 2%;
+  background-color: rgb(255, 197, 197);
+}
+
+#deleteButton:hover {
+  color: rgb(255, 197, 197);
+  background-color: red;
+}
+
+#addButton {
+  background-color: aliceblue;
+  color: darkblue;
+  border-radius: 20%;
+}
+
+#addButton:hover {
+  color: aliceblue;
+  background-color: darkblue;
+}
