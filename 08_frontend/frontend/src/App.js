@@ -39,7 +39,7 @@ function App() {
     const selectedIngredient = Array.from(
       document.getElementsByName("ingredient")
     ).find((input) => input.checked)?.value;
-    
+
     // Kontroll, et vähemalt üks oleks olemas
     if (!selectedIngredient) {
       prompt("Toiduaine pole valitud.");
