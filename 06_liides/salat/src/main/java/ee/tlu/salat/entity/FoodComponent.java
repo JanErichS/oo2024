@@ -1,4 +1,4 @@
-package ee.tlu.salat;
+package ee.tlu.salat.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

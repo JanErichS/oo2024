@@ -1,4 +1,4 @@
-package ee.tlu.salat;
+package ee.tlu.salat.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class IngredientEntity {
     @Id // Alati unikaalne; võtab nime id-ks.
-    String name;
-    int protein;
-    int fat;
-    int carbs;
+    private String name;
+    private int protein;
+    private int fat;
+    private int carbs;
 }

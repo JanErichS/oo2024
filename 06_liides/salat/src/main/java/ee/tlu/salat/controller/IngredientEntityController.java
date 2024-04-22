@@ -1,4 +1,6 @@
-package ee.tlu.salat;
+package ee.tlu.salat.controller;
+import ee.tlu.salat.entity.IngredientEntity;
+import ee.tlu.salat.repository.IngredientRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class IngredientEntityController {
 
     @PostMapping("toiduained")
     public List<IngredientEntity> addIngredientsAlso(@RequestBody IngredientEntity ingredientEntity){
-        if (ingredientEntity.protein + ingredientEntity.fat + ingredientEntity.carbs > 100){
+        if (ingredientEntity.getProtein() + ingredientEntity.getFat() + ingredientEntity.getCarbs() > 100){
             return ingredientRepository.findAll();
         }
 

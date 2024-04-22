@@ -1,4 +1,4 @@
-package ee.tlu.salat;
+package ee.tlu.salat.controller;
 
 import org.springframework.web.bind.annotation.*;
 

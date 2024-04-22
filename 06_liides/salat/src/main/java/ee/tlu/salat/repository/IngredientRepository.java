@@ -1,5 +1,6 @@
-package ee.tlu.salat;
+package ee.tlu.salat.repository;
 
+import ee.tlu.salat.entity.IngredientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

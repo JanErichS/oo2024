@@ -19,6 +19,38 @@ function App() {
   const ingredientNameRef = useRef();
   const ingredientAmountRef = useRef();
 
+  /*function addFood() {
+    const selectedComponent = Array.from(
+      document.getElementsByName("component")
+    ).find((input) => input.checked)?.value;
+
+    // Kontroll, et vähemalt üks oleks olemas
+    if (!selectedComponent) {
+      prompt("Toiduaine pole valitud.");
+      return;
+    }
+
+    const addedComponent = {
+      ingredient: { name: selectedComponent },
+      name: ingredientAmountRef.current.value,
+    };
+    console.log(JSON.stringify(addedComponent));
+    fetch("http://localhost:8080/toidukomponendid", {
+      method: "POST",
+      body: JSON.stringify(addedComponent),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setFoodComponents(json);
+      });
+  }*/
+
+
+
+
+  // TOIDUKOMPONENDID
+
   useEffect(() => {
     fetch("http://localhost:8080/toidukomponendid")
       .then((response) => response.json())
