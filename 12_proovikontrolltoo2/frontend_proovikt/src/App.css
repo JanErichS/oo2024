@@ -1,0 +1,108 @@
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.addProduct {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-self: center;
+}
+
+#deleteButton {
+	align-items: center;
+	align-self: center;
+	align-content: center;
+	color: red;
+	border-radius: 20%;
+	border-style: none;
+	margin-left: 2%;
+	background-color: rgb(255, 197, 197);
+}
+
+#deleteButton:hover {
+	color: rgb(255, 197, 197);
+	background-color: red;
+}
+
+#addButton {
+	background-color: aliceblue;
+	color: darkblue;
+	border-radius: 20%;
+}
+
+#addButton:hover {
+	color: aliceblue;
+	background-color: darkblue;
+}
+
+.active {
+	background-color: blue;
+}
+
+.inactive {
+	background-color: red;
+}
+
+#products {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+#products > div:first-child {
+	flex-grow: 1;
+	margin-right: 10px;
+}
+
+#products .active,
+#products .inactive {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+
+#products .active {
+	background-color: blue;
+}
+
+#products .inactive {
+	background-color: red;
+}

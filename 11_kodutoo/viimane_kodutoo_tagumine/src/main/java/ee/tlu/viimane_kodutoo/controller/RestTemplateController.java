@@ -52,6 +52,7 @@ public class RestTemplateController {
         //ResponseEntity<PaintingData> response = restTemplate.exchange(url, HttpMethod.GET, null, PaintingData.class);
 
         // Senjoor robotniku kood.
+        // Kui andmestikus ei leidu sellist pilti, siis viskab, et pilti pole.
         try {
             ResponseEntity<PaintingData> response = restTemplate.exchange(url, HttpMethod.GET, null, PaintingData.class);
             return ResponseEntity.ok(Objects.requireNonNull(response.getBody()));
