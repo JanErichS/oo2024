@@ -40,9 +40,11 @@ public class ShortStoryController {
     }
 
     //4) Näita API otspunktist kõikide raamatute kogumaksumust teises valuutas (sisesta API otspunkti kordaja, millega korrutad tagastatavat numbrit)
-    @GetMapping("raamatud-maksumus/{exhangeRate}")
-    public double getBookPricesDifferentCurrency(@PathVariable Double exchangeRate){
-        return bookRepository.findAll().stream().mapToDouble(BookStories::getPrice).sum() * exchangeRate;
+    @GetMapping("raamatud-maksumus/{exchangeRate}")
+    public double getBookPricesDifferentCurrency(@PathVariable double exchangeRate){
+        return bookRepository.findAll().stream()
+                .mapToDouble(BookStories::getPrice)
+                .sum() * exchangeRate;
     }
 
     //5) Võimalda API otspunktist võtta kõige suurema lehekülgede arvuga raamat.

@@ -89,7 +89,7 @@ public class RestTemplateController {
 
 
     // kõik raamatud uuemad kui sisestatud aasta,
-    @GetMapping("books-older-than/{year}")
+    @GetMapping("books-newer-than/{year}")
     public List<NewBook> getBookOlderThan(@PathVariable int year) {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://freetestapi.com/api/v1/books";
